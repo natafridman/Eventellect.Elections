@@ -2,9 +2,9 @@
 
 namespace Elections.Ballots;
 
-public static class RankedChoiceBallotFactory
+public static class RankedBallotFactory
 {
-    public static IReadOnlyList<IRankedChoiceBallot> Create(IReadOnlyList<IVoter> voters, IReadOnlyList<ICandidate> candidates)
+    public static IReadOnlyList<IRankedBallot> Create(IReadOnlyList<IVoter> voters, IReadOnlyList<ICandidate> candidates)
     {
         return voters.Select(x => CreateBallot(x, candidates)).ToList();
     }
@@ -43,7 +43,7 @@ public static class RankedChoiceBallotFactory
         return Random.Shared.Next() % candidates.Count + 1;
     }
 
-    private record RankedChoiceBallot(IVoter Voter, IReadOnlyList<IRankedVote> Votes) : IRankedChoiceBallot;
+    private record RankedChoiceBallot(IVoter Voter, IReadOnlyList<IRankedVote> Votes) : IRankedBallot;
 
     private record RankedChoiceVote(ICandidate Candidate, int Rank) : IRankedVote;
 }

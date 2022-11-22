@@ -1,6 +1,6 @@
 ﻿namespace Elections.Interfaces;
 
-public interface ISimpleBallot : IBallot
+public interface ISingleVoteBallot : IBallot
 {
     IVote Vote { get; }
 }
