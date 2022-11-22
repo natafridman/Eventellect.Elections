@@ -4,8 +4,8 @@ namespace Elections;
 
 public static class Candidates
 {
-    private static readonly IReadOnlyList<ICandidate> _official = GenerateOfficial().ToList();
-    private static readonly IReadOnlyList<ICandidate> _writeIns = GenerateWriteIns().ToList();
+    private static readonly IReadOnlyList<ICandidate> _official = GetNewYorkCityDemocraticMayoralPrimary().ToList();
+    private static readonly IReadOnlyList<ICandidate> _writeIns = GetSupremeCourtJustices().ToList();
     private const int _writeInFactor = 1337;
 
     public static IReadOnlyList<ICandidate> Official => _official;
@@ -16,7 +16,7 @@ public static class Candidates
         return candidatePool[Random.Shared.Next(candidatePool.Count)];
     }
 
-    private static IEnumerable<ICandidate> GenerateOfficial()
+    private static IEnumerable<ICandidate> GetNewYorkCityDemocraticMayoralPrimary()
     {
         yield return new Candidate(10001, "Eric Adams");
         yield return new Candidate(10002, "Shaun Donovan");
@@ -28,7 +28,7 @@ public static class Candidates
         yield return new Candidate(10008, "Andrew Yang");
     }
 
-    private static IEnumerable<ICandidate> GenerateWriteIns()
+    private static IEnumerable<ICandidate> GetSupremeCourtJustices()
     {
         yield return new Candidate(int.MaxValue - 1, "John G. Roberts, Jr.");
         yield return new Candidate(int.MaxValue - 2, "Clarence Thomas");

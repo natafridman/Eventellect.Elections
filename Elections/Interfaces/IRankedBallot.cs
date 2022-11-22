@@ -1,6 +1,6 @@
 ﻿namespace Elections.Interfaces;
 
-public interface IRankedChoiceBallot : IBallot
+public interface IRankedBallot : IBallot
 {
     IReadOnlyList<IRankedVote> Votes { get; }
 }

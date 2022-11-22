@@ -6,9 +6,9 @@ using Elections.Interfaces;
 
 namespace Elections.Ballots;
 
-public static class SimpleBallotFactory
+public static class SingleVoteBallotFactory
 {
-    public static IReadOnlyList<ISimpleBallot> Create(IReadOnlyList<IVoter> voters, IReadOnlyList<ICandidate> candidates)
+    public static IReadOnlyList<ISingleVoteBallot> Create(IReadOnlyList<IVoter> voters, IReadOnlyList<ICandidate> candidates)
     {
         return voters.Select(x => CreateSimpleBallot(x, candidates)).ToList();
     }
@@ -28,7 +28,7 @@ public static class SimpleBallotFactory
         return new SimpleVote(voterCandidate);
     }
 
-    private record SimpleBallot(IVoter Voter, IVote Vote) : ISimpleBallot;
+    private record SimpleBallot(IVoter Voter, IVote Vote) : ISingleVoteBallot;
 
     private record SimpleVote(ICandidate Candidate) : IVote;
 }

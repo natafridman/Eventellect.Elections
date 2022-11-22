@@ -2,10 +2,10 @@
 
 namespace Elections.Elections;
 
-public class RankedChoiceElection : IElection<IRankedChoiceBallot>
+public class RankedChoiceElection : IElection<IRankedBallot>
 {
-    public ICandidate Run(IReadOnlyList<IRankedChoiceBallot> ballots, IReadOnlyList<ICandidate> candidates)
+    public ICandidate Run(IReadOnlyList<IRankedBallot> ballots, IReadOnlyList<ICandidate> candidates)
     {
-        return null;
+        throw new NotImplementedException();
     }
 }
