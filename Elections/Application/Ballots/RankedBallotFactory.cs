@@ -1,6 +1,7 @@
-﻿using Elections.Interfaces;
+﻿using Elections.Domain.Interfaces;
+using Elections.Domain.Models;
 
-namespace Elections.Ballots;
+namespace Elections.Application.Ballots;
 
 public static class RankedBallotFactory
 {
@@ -43,7 +44,7 @@ public static class RankedBallotFactory
         return Random.Shared.Next() % candidates.Count + 1;
     }
 
-    private record RankedChoiceBallot(IVoter Voter, IReadOnlyList<IRankedVote> Votes) : IRankedBallot;
+    public record RankedChoiceBallot(IVoter Voter, IReadOnlyList<IRankedVote> Votes) : IRankedBallot;
 
-    private record RankedChoiceVote(ICandidate Candidate, int Rank) : IRankedVote;
+    public record RankedChoiceVote(ICandidate Candidate, int Rank) : IRankedVote;
 }

@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.Linq;
-using Elections.Interfaces;
+using Elections.Domain.Interfaces;
+using Elections.Domain.Models;
 
-namespace Elections.Ballots;
+namespace Elections.Application.Ballots;
 
 public static class SingleVoteBallotFactory
 {
@@ -28,7 +29,7 @@ public static class SingleVoteBallotFactory
         return new SimpleVote(voterCandidate);
     }
 
-    private record SimpleBallot(IVoter Voter, IVote Vote) : ISingleVoteBallot;
+    public record SimpleBallot(IVoter Voter, IVote Vote) : ISingleVoteBallot;
 
-    private record SimpleVote(ICandidate Candidate) : IVote;
+    public record SimpleVote(ICandidate Candidate) : IVote;
 }
