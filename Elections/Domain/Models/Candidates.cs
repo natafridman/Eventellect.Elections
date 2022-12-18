@@ -1,6 +1,6 @@
-﻿using Elections.Interfaces;
+﻿using Elections.Domain.Interfaces;
 
-namespace Elections;
+namespace Elections.Domain.Models;
 
 public static class Candidates
 {
@@ -47,5 +47,5 @@ public static class Candidates
         return randomNumber % _writeInFactor == 0;
     }
 
-    private record Candidate(int Id, string Name) : ICandidate, IVoter;
+    public record Candidate(int Id, string Name) : ICandidate, IVoter;
 }

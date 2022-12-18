@@ -1,9 +1,8 @@
-﻿using Elections;
-using Elections.Interfaces;
-using Elections.Ballots;
-using Elections.Elections;
-using System.Diagnostics;
-using System.Reflection;
+﻿using System.Diagnostics;
+using Elections.Elections.Services;
+using Elections.Domain.Models;
+using Elections.Domain.Interfaces;
+using Elections.Application.Ballots;
 
 const int numVoters = 100_000;
 var voters = Voters.Create(numVoters, Candidates.Official);
@@ -15,13 +14,13 @@ RunRankedChoiceElection(voters);
 static void RunSimpleElection(IReadOnlyList<IVoter> voters)
 {
     var ballots = SingleVoteBallotFactory.Create(voters, Candidates.Official);
-    RunElection<PluralityElection, ISingleVoteBallot>(ballots);
+    RunElection<PluralityElectionService, ISingleVoteBallot>(ballots);
 }
 
 static void RunRankedChoiceElection(IReadOnlyList<IVoter> voters)
 {
     var ballots = RankedBallotFactory.Create(voters, Candidates.Official);
-    RunElection<RankedChoiceElection, IRankedBallot>(ballots);
+    RunElection<RankedChoiceElectionService, IRankedBallot>(ballots);
 }
 
 static void RunElection<TElection, TBallot>(IReadOnlyList<TBallot> ballots)
